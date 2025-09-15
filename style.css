@@ -1,0 +1,140 @@
+:root {
+  --bg: #03040c;
+  --panel-bg: rgba(15, 18, 40, 0.85);
+  --accent: #ffae44;
+  --text: #dce6ff;
+  --muted: #8a96c9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #10152d 0%, #03040c 70%);
+  color: var(--text);
+}
+
+canvas#scene {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(3, 4, 12, 0.92), rgba(5, 7, 18, 0.95));
+  display: grid;
+  place-items: center;
+  z-index: 10;
+}
+
+.panel {
+  max-width: 420px;
+  padding: 2.5rem;
+  background: var(--panel-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+
+.panel h1 {
+  margin-top: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+button {
+  padding: 0.8rem 1.8rem;
+  margin-top: 1rem;
+  background: var(--accent);
+  border: none;
+  border-radius: 999px;
+  color: #1e1302;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(255, 174, 68, 0.3);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.controls {
+  text-align: left;
+  margin-top: 1.5rem;
+  color: var(--muted);
+}
+
+.controls ul {
+  padding-left: 1.2rem;
+}
+
+#hud {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
+#shard-counter {
+  font-size: 1.1rem;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+#hint-text {
+  align-self: center;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(16, 20, 40, 0.65);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 20px rgba(82, 133, 255, 0.25);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-size: 0.9rem;
+}
+
+#hint-text.visible {
+  opacity: 1;
+}
+
+#crosshair {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#fade {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(8, 10, 20, 0.4), rgba(3, 4, 12, 0.95));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 8;
+}
+
+#fade.active {
+  opacity: 1;
+}
+
+.hidden {
+  display: none;
+}
